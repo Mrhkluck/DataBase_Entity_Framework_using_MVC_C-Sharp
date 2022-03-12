@@ -12,6 +12,8 @@ namespace DB_FirstEntity.Models
     using System;
     using System.Collections.Generic;
     
+    //POCO classes
+    //DTO classes
     public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

@@ -28,7 +28,7 @@ namespace DB_FirstEntity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Find(id); //search logic
             if (student == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,7 @@ namespace DB_FirstEntity.Controllers
 
         // GET: Students/Create
         public ActionResult Create()
-        {
+        {                                                  //value     //text
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
             ViewBag.StandardId = new SelectList(db.Standards, "StandardId", "StandardName");
             return View();
@@ -57,7 +57,7 @@ namespace DB_FirstEntity.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+                                               //data        //value    //text        //selected value
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", student.CourseId);
             ViewBag.StandardId = new SelectList(db.Standards, "StandardId", "StandardName", student.StandardId);
             return View(student);
@@ -83,13 +83,15 @@ namespace DB_FirstEntity.Controllers
         // POST: Students/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //student update logic 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StudentId,FirstName,LastName,StandardId,CourseId")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
+                db.Entry(student).State = EntityState.Modified; //for update
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -119,7 +121,7 @@ namespace DB_FirstEntity.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Student student = db.Students.Find(id);
-            db.Students.Remove(student);
+            db.Students.Remove(student); //for delete
             db.SaveChanges();
             return RedirectToAction("Index");
         }
