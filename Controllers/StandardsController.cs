@@ -10,6 +10,7 @@ using DB_FirstEntity.Models;
 
 namespace DB_FirstEntity.Controllers
 {
+    [Authorize]
     public class StandardsController : Controller
     {
         private CollegeDbEntities2 db = new CollegeDbEntities2();

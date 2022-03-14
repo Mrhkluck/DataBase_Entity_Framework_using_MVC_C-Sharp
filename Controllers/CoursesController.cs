@@ -8,13 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using DB_FirstEntity.Models;
 
+
+//IUser IIS_User ->Anonymous User
 namespace DB_FirstEntity.Controllers
 {
+   // [Authorize]
     public class CoursesController : Controller
     {
         private CollegeDbEntities2 db = new CollegeDbEntities2();
 
         // GET: Courses
+       // [Authorize]
         public ActionResult Index()
         {
             var courses = db.Courses.Include(c => c.Faculty);
